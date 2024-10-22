@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listar Inscritos</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    
+    <h1>Registro en Seminario </h1>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="flash {{ 'success' if 'exitoso' in message else 'error' }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <a href="{{ url_for('registrar_inscrito') }}">Nuevo</a>
+    <br>
+    <br>
+    <a href="{{ url_for('index') }}">Volver</a>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
+            
+            <th>Turno</th>
+            <th>Seminarios</th>
+            <th>Acciones</th>
+        </tr>
+        {% for inscrito in inscritos %}
+        <tr>
+            <td>{{ inscrito.id }}</td>
+            <td>{{ inscrito.fecha }}</td>
+            <td>{{ inscrito.nombre }}</td>
+            <td>{{ inscrito.apellido }}</td>
+            
+            <td>{{ inscrito.turno }}</td>
+            <td>{{ inscrito.seminario | join(', ') }}</td>
+            <td>
+                <a href="{{ url_for('editar_inscrito', inscrito_id=inscrito.id) }}">Editar</a>
+                <a href="{{ url_for('eliminar_inscrito', inscrito_id=inscrito.id) }}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+   
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Inscrito</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Editar Inscrito</h1>
+    <form method="post">
+        <label>ID:</label>
+        <input type="text" name="id" value="{{ inscrito.id }}" required><br>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" value="{{ inscrito.nombre }}" required><br>
+        <label>Apellido:</label>
+        <input type="text" name="apellido" value="{{ inscrito.apellido }}" required><br>
+        <label>Fecha:</label>
+        <input type="date" name="fecha" value="{{ inscrito.fecha }}" required><br>
+        <label>Turno:</label>
+        <select name="turno" required>
+            <option value="{{ inscrito.turno }}">{{ inscrito.turno }}</option>
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noche">Noche</option>
+        </select><br>
+        <label>Seminarios Disponibles:</label><br>
+        {% for seminario in seminarios %}
+            <input type="checkbox" name="seminarios" value="{{ seminario }}" 
+            {% if seminario in inscrito.seminario %}checked{% endif %}>{{ seminario }}<br>
+        {% endfor %}
+        <input type="submit" value="Actualizar Inscrito">
+    </form>
+    <a href="{{ url_for('listar_inscritos') }}">Volver</a>
+</body>
+</html>

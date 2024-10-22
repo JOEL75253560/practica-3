@@ -1,0 +1,99 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center
+}
+
+nav {
+    margin: 20px 0;
+}
+
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #ddd;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+.flash {
+    padding: 10px;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.flash.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.flash.success {
+    background-color: #d4edda;
+    color: #155724;
+}

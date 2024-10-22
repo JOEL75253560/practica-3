@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Inscrito</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Registro en Seminario</h1>
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for message in messages %}
+          <div class="flash {{ 'success' if 'exitoso' in message else 'error' }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    <form method="post">
+        <label>ID:</label>
+        <input type="text" name="id" required><br>
+        <label>Fecha:</label>
+        <input type="date" name="fecha" required><br>
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required><br>
+        <label>Apellido:</label>
+        <input type="text" name="apellido" required><br>
+        
+        <label>Turno:</label>
+        <select name="turno" required>
+            <option value="">Seleccionar Turno</option>
+            <option value="Mañana">Mañana</option>
+            <option value="Tarde">Tarde</option>
+            <option value="Noche">Noche</option>
+        </select><br>
+        <label>Seminarios Disponibles:</label><br>
+        {% for seminario in seminarios %}
+            <input type="checkbox" name="seminarios" value="{{ seminario }}">{{ seminario }}<br>
+        {% endfor %}
+        <input type="submit" value="Envir registro">
+    </form>
+    <a href="{{ url_for('index') }}">Volver</a>
+</body>
+</html>
